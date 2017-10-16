@@ -4,15 +4,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.thejoeunit.www.chayoonnail.frag.FragmentOne;
-import com.thejoeunit.www.chayoonnail.frag.FragmentTwo;
+import com.thejoeunit.www.chayoonnail.fragment.photoViewFragment;
+import com.thejoeunit.www.chayoonnail.fragment.postFragment;
 
 public class MainActivity extends BaseActivity {
-    private FragmentOne fragmentOne;
-    private FragmentTwo fragmentTwo;
+    private photoViewFragment photoViewFragment;
+    private postFragment postFragment;
     private TabLayout allTabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +27,10 @@ public class MainActivity extends BaseActivity {
         switch (tabPosition)
         {
             case 0 :
-                replaceFragment(fragmentOne);
+                replaceFragment(photoViewFragment);
                 break;
             case 1 :
-                replaceFragment(fragmentTwo);
+                replaceFragment(postFragment);
                 break;
         }
     }
@@ -62,8 +61,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setValues() {
 
-        fragmentOne = new FragmentOne();
-        fragmentTwo = new FragmentTwo();
+        photoViewFragment = new photoViewFragment();
+        postFragment = new postFragment();
         allTabs.addTab(allTabs.newTab().setText("1번탭"),true);
         allTabs.addTab(allTabs.newTab().setText("2번탭"));
     }

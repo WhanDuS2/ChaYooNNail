@@ -40,6 +40,10 @@ public class DesignViewAdapter extends ArrayAdapter<Photo> {
             row = inf.inflate(R.layout.design_view_list_tiem, null);
         }
 
+        ImageView nailDesignImg = (ImageView) row.findViewById(R.id.nailDesignImg);
+
+        Glide.with(mContext).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(nailDesignImg);
+
 
 
         return row;

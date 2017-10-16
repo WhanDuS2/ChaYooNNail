@@ -1,47 +1,75 @@
 package com.thejoeunit.www.chayoonnail;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.view.View;
-import android.widget.ImageView;
+
+import com.thejoeunit.www.chayoonnail.fragment.photoViewFragment;
+import com.thejoeunit.www.chayoonnail.fragment.postFragment;
 
 public class MainActivity extends BaseActivity {
-
-    private android.support.v4.widget.DrawerLayout naviMenu;
-    private android.widget.ImageView menuImg;
-
+    private photoViewFragment photoViewFragment;
+    private postFragment postFragment;
+    private TabLayout allTabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         bindViews();
         setupEvents();
         setValues();
+    }
 
+    private void setCurrentTabFragment(int tabPosition)
+    {
+        switch (tabPosition)
+        {
+            case 0 :
+                replaceFragment(photoViewFragment);
+                break;
+            case 1 :
+                replaceFragment(postFragment);
+                break;
+        }
+    }
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.frame_container, fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
     }
 
     @Override
     public void setupEvents() {
-
-        menuImg.setOnClickListener(new View.OnClickListener() {
+        allTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                naviMenu.openDrawer(GravityCompat.START);
+            public void onTabSelected(TabLayout.Tab tab) {
+                setCurrentTabFragment(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
     }
 
     @Override
     public void setValues() {
 
+        photoViewFragment = new photoViewFragment();
+        postFragment = new postFragment();
+        allTabs.addTab(allTabs.newTab().setText("1번탭"),true);
+        allTabs.addTab(allTabs.newTab().setText("2번탭"));
     }
 
     @Override
     public void bindViews() {
-        this.naviMenu = (DrawerLayout) findViewById(R.id.naviMenu);
-        this.menuImg = (ImageView) findViewById(R.id.menuImg);
+
+        allTabs = (TabLayout) findViewById(R.id.tabs);
     }
 }

@@ -10,6 +10,8 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/nailDesignImg"
+            android:src="@mipmap/ic_launcher_round"
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="100dp" />

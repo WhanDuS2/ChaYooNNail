@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.thejoeunit.www.chayoonnail.R;
 import com.thejoeunit.www.chayoonnail.data.Photo;
 
@@ -39,6 +40,10 @@ public class DesignViewAdapter extends ArrayAdapter<Photo> {
         if ( row == null) {
             row = inf.inflate(R.layout.design_view_list_tiem, null);
         }
+
+        ImageView nailDesignImg = (ImageView) row.findViewById(R.id.nailDesignImg);
+
+        Glide.with(mContext).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(nailDesignImg);
 
 
 

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.thejoeunit.www.chayoonnail.frag.FragmentOne;
 import com.thejoeunit.www.chayoonnail.frag.FragmentTwo;
@@ -30,7 +31,7 @@ public class MainActivity extends BaseActivity {
             case 0 :
                 replaceFragment(fragmentOne);
                 break;
-            case 1 :
+            case 2 :
                 replaceFragment(fragmentTwo);
                 break;
         }
@@ -48,7 +49,13 @@ public class MainActivity extends BaseActivity {
         allTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                setCurrentTabFragment(tab.getPosition());
+                if (tab.getPosition() == 1) {
+                    Toast.makeText(mContext, "사진 추가 창", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    setCurrentTabFragment(tab.getPosition());
+                }
+
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -66,6 +73,7 @@ public class MainActivity extends BaseActivity {
         fragmentTwo = new FragmentTwo();
         allTabs.addTab(allTabs.newTab().setText("1번탭"),true);
         allTabs.addTab(allTabs.newTab().setText("2번탭"));
+        allTabs.addTab(allTabs.newTab().setText("3번탭"));
     }
 
     @Override

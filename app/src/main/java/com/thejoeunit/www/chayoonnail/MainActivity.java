@@ -1,5 +1,6 @@
 package com.thejoeunit.www.chayoonnail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -21,11 +22,12 @@ public class MainActivity extends BaseActivity {
     private android.widget.FrameLayout framecontainer;
     private TabLayout tabs;
     private android.support.v4.widget.DrawerLayout naviMenu;
+    private ImageView searchImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         bindViews();
         setupEvents();
@@ -54,11 +56,21 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+        searchImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         menuImg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    naviMenu.openDrawer(GravityCompat.START);
-                }
+            @Override
+            public void onClick(View view) {
+                naviMenu.openDrawer(GravityCompat.START);
+            }
         });
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -81,16 +93,18 @@ public class MainActivity extends BaseActivity {
 
         photoViewFragment = new photoViewFragment();
         postFragment = new postFragment();
-        tabs.addTab(tabs.newTab().setText("1번탭"), true);
-        tabs.addTab(tabs.newTab().setText("2번탭"));
+        tabs.addTab(tabs.newTab().setText("Design"), true);
+        tabs.addTab(tabs.newTab().setText("ADD"));
+        tabs.addTab(tabs.newTab().setText("POSTING"));
+        tabs.addTab(tabs.newTab().setText("INSTAGRAM"));
     }
 
     @Override
     public void bindViews() {
-
         this.naviMenu = (DrawerLayout) findViewById(R.id.naviMenu);
         this.tabs = (TabLayout) findViewById(R.id.tabs);
         this.framecontainer = (FrameLayout) findViewById(R.id.frame_container);
+        this.searchImg = (ImageView) findViewById(R.id.searchImg);
         this.menuImg = (ImageView) findViewById(R.id.menuImg);
     }
 }

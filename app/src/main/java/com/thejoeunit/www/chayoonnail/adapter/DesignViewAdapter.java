@@ -37,14 +37,13 @@ public class DesignViewAdapter extends ArrayAdapter<Photo> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View row = convertView;
-        if ( row == null) {
+        if (row == null) {
             row = inf.inflate(R.layout.design_view_list_tiem, null);
         }
 
         ImageView nailDesignImg = (ImageView) row.findViewById(R.id.nailDesignImg);
 
-        Glide.with(mContext).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(nailDesignImg);
-
+        Glide.with(mContext).load("https://lh3.googleusercontent.com/DjUgn0hqwzO0hw4NchiE4r66I5vutBFZQWsL0nct8gFTkzRhBIAZmyXPdtyzD4-hKGM=w300").into(nailDesignImg);
 
 
         return row;

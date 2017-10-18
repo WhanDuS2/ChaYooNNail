@@ -9,6 +9,7 @@
 
      
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -37,6 +38,8 @@
 
     </LinearLayout>
 
+
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/naviMenu"
         android:layout_width="match_parent"
@@ -46,14 +49,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/frame_container"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
@@ -69,19 +72,37 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:orientation="vertical"
-            android:background="#ffffff">
+            android:background="#ffffff"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:background="#FFB3DE"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/ic_launcher_round" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ACCOUNT" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="로그인이 필요합니다."
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -91,17 +112,37 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="로그인" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="ACCOUNT"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="로그인"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <TextView
-                android:layout_width="2dp"
-                android:background="#575D70"
-                android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#575D70" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,10 +150,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WITH US" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="WITH US"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -122,10 +166,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="공지사항" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="공지사항"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -135,10 +182,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="의견 보내기" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="의견 보내기"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -148,15 +198,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="약관" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="약관"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
             </LinearLayout>
+
 
         </LinearLayout>
 
+
     </android.support.v4.widget.DrawerLayout>
+
 
 </LinearLayout>

@@ -8,6 +8,21 @@ import java.io.Serializable;
 
 public class Photo implements Serializable {
 
+    private String nailPhotoViews; // 네일사진들
 
 
+    public Photo() {
+    }
+
+    public Photo(String nailPhotoViews) {
+        this.nailPhotoViews = nailPhotoViews;
+    }
+
+    public String getNailPhotoViews() {
+        return nailPhotoViews;
+    }
+
+    public void setNailPhotoViews(String nailPhotoViews) {
+        this.nailPhotoViews = nailPhotoViews;
+    }
 }

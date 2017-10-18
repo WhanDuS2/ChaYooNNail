@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.thejoeunit.www.chayoonnail.adapter.helpSearchAdapter;
+import com.thejoeunit.www.chayoonnail.adapter.HelpSearchAdapter;
 import com.thejoeunit.www.chayoonnail.data.Search;
 import com.thejoeunit.www.chayoonnail.util.GlobalData;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class SearchActivity extends BaseActivity {
 
     List<Search> SearchDatas = new ArrayList<>();
-    helpSearchAdapter mAdapter;
+    HelpSearchAdapter mAdapter;
     private android.widget.ListView helpSearchListView;
     private android.widget.ImageView backImg;
     private android.widget.ImageView searchImg;
@@ -49,7 +49,7 @@ public class SearchActivity extends BaseActivity {
     @Override
     public void setValues() {
 
-        mAdapter = new helpSearchAdapter(SearchActivity.this, GlobalData.searchDatas);
+        mAdapter = new HelpSearchAdapter(SearchActivity.this, GlobalData.searchDatas);
         helpSearchListView.setAdapter(mAdapter);
 
     }

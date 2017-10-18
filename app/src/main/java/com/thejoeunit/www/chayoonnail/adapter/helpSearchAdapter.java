@@ -24,12 +24,12 @@ import java.util.List;
  * Created by the on 2017-10-18.
  */
 
-public class helpSearchAdapter extends ArrayAdapter<Search> {
+public class HelpSearchAdapter extends ArrayAdapter<Search> {
     Context mContext;
     List<Search> mList;
     LayoutInflater inf;
 
-    public helpSearchAdapter(Context context, List<Search> list) {
+    public HelpSearchAdapter(Context context, List<Search> list) {
         super(context, R.layout.help_search_list, list);
         mContext = context;
         mList = list;

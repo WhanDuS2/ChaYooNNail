@@ -6,11 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.ListView;
 
 import com.thejoeunit.www.chayoonnail.R;
-import com.thejoeunit.www.chayoonnail.adapter.DesignViewAdapter;
-import com.thejoeunit.www.chayoonnail.data.Photo;
+import com.thejoeunit.www.chayoonnail.adapter.PostingAdapter;
+import com.thejoeunit.www.chayoonnail.data.Post;
 import com.thejoeunit.www.chayoonnail.util.GlobalData;
 
 import java.util.ArrayList;
@@ -22,17 +22,17 @@ import java.util.List;
 
 //빨간색 프래그먼트
 
-public class PhotoViewFragment extends Fragment {
+public class PostingFragment extends Fragment {
 
-    private android.widget.GridView designPhotoGridView;
-    DesignViewAdapter mAdapter;
-    List<Photo> photoLists = new ArrayList<>();
+    PostingAdapter mAdapter;
+    List<Post> postLists = new ArrayList<>();
+    private android.widget.ListView postListview;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.photo_view_fragment, container, false);
-        this.designPhotoGridView = (GridView) v.findViewById(R.id.designPhotoGridView);
+        View v = inflater.inflate(R.layout.posting_fragment, container, false);
+        this.postListview = (ListView) v.findViewById(R.id.postListview);
         return v;
     }
 
@@ -40,7 +40,7 @@ public class PhotoViewFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mAdapter = new DesignViewAdapter(getActivity(), GlobalData.photoLists);
-        designPhotoGridView.setAdapter(mAdapter);
+        mAdapter = new PostingAdapter(getActivity(), GlobalData.postsLists);
+        postListview.setAdapter(mAdapter);
     }
 }

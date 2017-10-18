@@ -1,4 +1,4 @@
-package com.thejoeunit.www.chayoonnail.frag;
+package com.thejoeunit.www.chayoonnail.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,12 +15,12 @@ import com.thejoeunit.www.chayoonnail.R;
 
 //빨간색 프래그먼트
 
-public class FragmentTwo extends Fragment {
+public class postFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.frag_two, container, false);
+        View v = inflater.inflate(R.layout.post_fragment, container, false);
         return v;
     }
 

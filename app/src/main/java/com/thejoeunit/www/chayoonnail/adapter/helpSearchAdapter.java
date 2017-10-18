@@ -8,25 +8,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.thejoeunit.www.chayoonnail.R;
 import com.thejoeunit.www.chayoonnail.data.Photo;
+import com.thejoeunit.www.chayoonnail.data.Search;
+import com.thejoeunit.www.chayoonnail.util.GlobalData;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
 /**
- * Created by the on 2017-10-16.
+ * Created by the on 2017-10-18.
  */
 
-public class DesignViewAdapter extends ArrayAdapter<Photo> {
-
+public class helpSearchAdapter extends ArrayAdapter<Search> {
     Context mContext;
-    List<Photo> mList;
+    List<Search> mList;
     LayoutInflater inf;
 
-    public DesignViewAdapter(Context context, List<Photo> list) {
-        super(context, R.layout.design_view_list_tiem, list);
+    public helpSearchAdapter(Context context, List<Search> list) {
+        super(context, R.layout.help_search_list, list);
         mContext = context;
         mList = list;
         inf = LayoutInflater.from(mContext);
@@ -38,19 +42,15 @@ public class DesignViewAdapter extends ArrayAdapter<Photo> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View row = convertView;
         if (row == null) {
-            row = inf.inflate(R.layout.design_view_list_tiem, null);
+            row = inf.inflate(R.layout.help_search_list, null);
         }
 
-        ImageView nailDesignImg = (ImageView) row.findViewById(R.id.nailDesignImg);
+        Search data = mList.get(position);
 
-        Glide.with(mContext).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAY_k-1EhK1C4mGTuO9dKGw2v96m-SZS3ZqHVaCq56XFwkK4t-").into(nailDesignImg);
-
+        TextView helpSearchTxt = (TextView) row.findViewById(R.id.helpSearchTxt);
+        helpSearchTxt.setText(data.getAutoSearchName());
 
         return row;
     }
 
-    @Override
-    public int getCount() {
-        return 20;
-    }
 }

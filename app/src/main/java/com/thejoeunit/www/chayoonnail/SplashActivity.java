@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thejoeunit.www.chayoonnail.util.GlobalData;
+
 public class SplashActivity extends BaseActivity {
 
     @Override
@@ -19,6 +21,8 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -32,10 +36,12 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void setValues() {
 
+        GlobalData.initDatas();
     }
 
     @Override
     public void bindViews() {
 
+// dd
     }
 }

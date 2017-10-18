@@ -1,41 +1,50 @@
 package com.thejoeunit.www.chayoonnail;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
-import com.thejoeunit.www.chayoonnail.frag.FragmentOne;
-import com.thejoeunit.www.chayoonnail.frag.FragmentTwo;
+import com.thejoeunit.www.chayoonnail.fragment.photoViewFragment;
+import com.thejoeunit.www.chayoonnail.fragment.postFragment;
 
 public class MainActivity extends BaseActivity {
-    private FragmentOne fragmentOne;
-    private FragmentTwo fragmentTwo;
-    private TabLayout allTabs;
+    private photoViewFragment photoViewFragment;
+    private postFragment postFragment;
+    private android.widget.ImageView menuImg;
+    private android.widget.FrameLayout framecontainer;
+    private TabLayout tabs;
+    private android.support.v4.widget.DrawerLayout naviMenu;
+    private ImageView searchImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         bindViews();
         setupEvents();
         setValues();
     }
 
-    private void setCurrentTabFragment(int tabPosition)
-    {
-        switch (tabPosition)
-        {
-            case 0 :
-                replaceFragment(fragmentOne);
+    private void setCurrentTabFragment(int tabPosition) {
+        switch (tabPosition) {
+            case 0:
+                replaceFragment(photoViewFragment);
                 break;
-            case 2 :
-                replaceFragment(fragmentTwo);
+            case 1:
+                replaceFragment(postFragment);
                 break;
         }
     }
+
     public void replaceFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -46,20 +55,33 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
-        allTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+        searchImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        menuImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naviMenu.openDrawer(GravityCompat.START);
+            }
+        });
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 1) {
-                    Toast.makeText(mContext, "사진 추가 창", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    setCurrentTabFragment(tab.getPosition());
-                }
-
+                setCurrentTabFragment(tab.getPosition());
             }
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
@@ -69,16 +91,20 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setValues() {
 
-        fragmentOne = new FragmentOne();
-        fragmentTwo = new FragmentTwo();
-        allTabs.addTab(allTabs.newTab().setText("1번탭"),true);
-        allTabs.addTab(allTabs.newTab().setText("2번탭"));
-        allTabs.addTab(allTabs.newTab().setText("3번탭"));
+        photoViewFragment = new photoViewFragment();
+        postFragment = new postFragment();
+        tabs.addTab(tabs.newTab().setText("Design"), true);
+        tabs.addTab(tabs.newTab().setText("ADD"));
+        tabs.addTab(tabs.newTab().setText("POSTING"));
+        tabs.addTab(tabs.newTab().setText("INSTAGRAM"));
     }
 
     @Override
     public void bindViews() {
-
-        allTabs = (TabLayout) findViewById(R.id.tabs);
+        this.naviMenu = (DrawerLayout) findViewById(R.id.naviMenu);
+        this.tabs = (TabLayout) findViewById(R.id.tabs);
+        this.framecontainer = (FrameLayout) findViewById(R.id.frame_container);
+        this.searchImg = (ImageView) findViewById(R.id.searchImg);
+        this.menuImg = (ImageView) findViewById(R.id.menuImg);
     }
 }

@@ -1,11 +1,13 @@
 package com.thejoeunit.www.chayoonnail.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.thejoeunit.www.chayoonnail.R;
@@ -22,7 +24,7 @@ import java.util.List;
 
 //빨간색 프래그먼트
 
-public class PhotoViewFragment extends Fragment {
+public class DesignViewFragment extends Fragment {
 
     private android.widget.GridView designPhotoGridView;
     DesignViewAdapter mAdapter;
@@ -33,14 +35,30 @@ public class PhotoViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.photo_view_fragment, container, false);
         this.designPhotoGridView = (GridView) v.findViewById(R.id.designPhotoGridView);
+
+
         return v;
+
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+//TODO       디자인화면 상세화면 만들어서 클릭되면 넘어가게 해야됨
+
+//        designPhotoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(getActivity(), )
+//            }
+//        });
+
         mAdapter = new DesignViewAdapter(getActivity(), GlobalData.photoLists);
         designPhotoGridView.setAdapter(mAdapter);
+
+
     }
 }
+

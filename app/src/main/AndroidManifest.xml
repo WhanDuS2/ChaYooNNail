@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/chayoon_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -25,7 +25,8 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".NoticeActivity" />
         <activity android:name=".SendFeedbackAcitivity" />
-        <activity android:name=".TermsOfUseActivity"></activity>
+        <activity android:name=".TermsOfUseActivity" />
+        <activity android:name=".ReplyActivity"></activity>
     </application>
 
 </manifest>

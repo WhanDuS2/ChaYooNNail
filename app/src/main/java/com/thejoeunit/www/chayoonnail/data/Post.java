@@ -13,6 +13,7 @@ public class Post implements Serializable {
     private String imageURL;
     private String intro;
 
+
     boolean isLike = false;
 
 

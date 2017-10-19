@@ -1,6 +1,8 @@
 package com.thejoeunit.www.chayoonnail.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,7 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.thejoeunit.www.chayoonnail.R;
+import com.thejoeunit.www.chayoonnail.ReplyActivity;
 import com.thejoeunit.www.chayoonnail.data.Post;
 import com.thejoeunit.www.chayoonnail.data.Search;
 import com.thejoeunit.www.chayoonnail.util.GlobalData;
@@ -47,16 +51,25 @@ public class PostingAdapter extends ArrayAdapter<Post> {
         final Post data = mList.get(position);
 
         ImageView userImg = (ImageView) row.findViewById(R.id.userImg);
+        Glide.with(mContext).load(data.getProfileURL()).into(userImg);
 
         TextView writerNickNameTxt = (TextView) row.findViewById(R.id.writerNickNameTxt);
         writerNickNameTxt.setText(data.getName());
 
         ImageView postingImg = (ImageView) row.findViewById(R.id.postingImg);
+        Glide.with(mContext).load(data.getImageURL()).into(postingImg);
 
-        ImageView moreImg = (ImageView) row.findViewById(R.id.moreImg);
+        ImageView replyImg = (ImageView) row.findViewById(R.id.replyImg);
+        replyImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, ReplyActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
 
-
-
+        TextView contentTxt = (TextView) row.findViewById(R.id.contentTxt);
+        contentTxt.setText(data.getIntro());
 
 
         final ImageView likeImg = (ImageView) row.findViewById(R.id.likeImg);
@@ -66,15 +79,13 @@ public class PostingAdapter extends ArrayAdapter<Post> {
                 if (data.isLike() == true) {
                     likeImg.setImageResource(R.drawable.heart);
                     data.setLike(false);
-                }
-                else {
+                } else {
                     likeImg.setImageResource(R.drawable.like_heart);
                     data.setLike(true);
                 }
 
             }
         });
-
 
 
         return row;

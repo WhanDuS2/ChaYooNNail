@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.thejoeunit.www.chayoonnail.fragment.InstagramFragment;
-import com.thejoeunit.www.chayoonnail.fragment.PhotoViewFragment;
+import com.thejoeunit.www.chayoonnail.fragment.DesignViewFragment;
 import com.thejoeunit.www.chayoonnail.fragment.PostingFragment;
 
 public class MainActivity extends BaseActivity {
@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity {
     final int REQ_FOR_GALLERY = 2;
 
     private InstagramFragment instagramFragment;
-    private PhotoViewFragment photoViewFragment;
+    private DesignViewFragment designViewFragment;
     private PostingFragment postingFragment;
     private android.widget.ImageView menuImg;
     private android.widget.FrameLayout framecontainer;
@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity {
     private void setCurrentTabFragment(int tabPosition) {
         switch (tabPosition) {
             case 0:
-                replaceFragment(photoViewFragment);
+                replaceFragment(designViewFragment);
                 break;
             case 1:
                 replaceFragment(postingFragment);
@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setValues() {
 
-        photoViewFragment = new PhotoViewFragment();
+        designViewFragment = new DesignViewFragment();
         postingFragment = new PostingFragment();
         instagramFragment = new InstagramFragment();
         tabs.addTab(tabs.newTab().setText("Design"), true);

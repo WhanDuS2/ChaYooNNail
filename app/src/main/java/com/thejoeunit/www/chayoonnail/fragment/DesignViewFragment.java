@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.thejoeunit.www.chayoonnail.PostingActivity;
 import com.thejoeunit.www.chayoonnail.R;
 import com.thejoeunit.www.chayoonnail.adapter.DesignViewAdapter;
 import com.thejoeunit.www.chayoonnail.data.Photo;
@@ -46,14 +47,14 @@ public class DesignViewFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//TODO       디자인화면 상세화면 만들어서 클릭되면 넘어가게 해야됨
 
-//        designPhotoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(getActivity(), )
-//            }
-//        });
+        designPhotoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), PostingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mAdapter = new DesignViewAdapter(getActivity(), GlobalData.photoLists);
         designPhotoGridView.setAdapter(mAdapter);

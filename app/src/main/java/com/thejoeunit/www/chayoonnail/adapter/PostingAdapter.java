@@ -1,16 +1,20 @@
 package com.thejoeunit.www.chayoonnail.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.thejoeunit.www.chayoonnail.R;
@@ -80,12 +84,45 @@ public class PostingAdapter extends ArrayAdapter<Post> {
                     likeImg.setImageResource(R.drawable.heart);
                     data.setLike(false);
                 } else {
-                    likeImg.setImageResource(R.drawable.like_heart);
+                    likeImg.setImageResource(R.drawable.red_heart_icon);
                     data.setLike(true);
                 }
 
             }
         });
+
+        ImageView moreImg = (ImageView) row.findViewById(R.id.moreImg);
+        moreImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String[] items = {"공유하기", "신고하기", "취소"};
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+                alert.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        아이템이 선택되면 할 일
+
+                        if (which == 0) {
+//                            사진 찍기가 눌린 상황
+
+                            Toast.makeText(mContext, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show();
+
+                        } else if (which == 1) {
+
+                            Toast.makeText(mContext, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show();
+                        }
+
+//                        Toast.makeText(mContext, which + "번 아이템 선택", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                alert.show();
+            }
+        });
+
+
 
 
         return row;

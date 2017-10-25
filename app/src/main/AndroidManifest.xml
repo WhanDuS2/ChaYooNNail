@@ -26,7 +26,9 @@
         <activity android:name=".NoticeActivity" />
         <activity android:name=".SendFeedbackAcitivity" />
         <activity android:name=".TermsOfUseActivity" />
-        <activity android:name=".ReplyActivity"></activity>
+        <activity android:name=".ReplyActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".PostingActivity"></activity>
     </application>
 
 </manifest>

@@ -14,9 +14,10 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.thejoeunit.www.chayoonnail.fragment.InstagramFragment;
 import com.thejoeunit.www.chayoonnail.fragment.DesignViewFragment;
+import com.thejoeunit.www.chayoonnail.fragment.InstagramFragment;
 import com.thejoeunit.www.chayoonnail.fragment.PostingFragment;
 
 public class MainActivity extends BaseActivity {
@@ -32,6 +33,9 @@ public class MainActivity extends BaseActivity {
     private TabLayout tabs;
     private android.support.v4.widget.DrawerLayout naviMenu;
     private ImageView searchImg;
+    private android.widget.TextView loginTxt;
+    private android.widget.TextView noticeTxt;
+    private android.widget.TextView termsOfUseTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +102,32 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+        loginTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        noticeTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        termsOfUseTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, TermsOfUseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         searchImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +175,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public void bindViews() {
         this.naviMenu = (DrawerLayout) findViewById(R.id.naviMenu);
+        this.termsOfUseTxt = (TextView) findViewById(R.id.termsOfUseTxt);
+        this.noticeTxt = (TextView) findViewById(R.id.noticeTxt);
+        this.loginTxt = (TextView) findViewById(R.id.loginTxt);
         this.tabs = (TabLayout) findViewById(R.id.tabs);
         this.framecontainer = (FrameLayout) findViewById(R.id.frame_container);
         this.searchImg = (ImageView) findViewById(R.id.searchImg);
